@@ -17,7 +17,10 @@ const slides = [
 	}
 ]
 
+// A variable that keeps track of the current slide
 let currentSlide = 0;
+
+// Get the DOM elements
 const arrowLeft = document.querySelector('.arrow_left');
 const arrowRight = document.querySelector('.arrow_right');
 const bannerImg = document.querySelector('#banner img');
@@ -34,6 +37,7 @@ for (let i = 0; i < slides.length; i++) {
   dotsContainer.appendChild(dot);
 }
 
+// Add event listeners for the arrow buttons
 arrowLeft.addEventListener('click', function() {
   currentSlide--;
   if (currentSlide < 0) {
@@ -52,6 +56,7 @@ arrowRight.addEventListener('click', function() {
   updateDots();
 });
 
+// Add event listener for the dots container
 dotsContainer.addEventListener('click', function(event) {
   if (event.target.classList.contains('dot')) {
     currentSlide = event.target.getAttribute('data-index');
@@ -60,11 +65,13 @@ dotsContainer.addEventListener('click', function(event) {
   }
 });
 
+// Function that updates the banner
 function updateBanner() {
   bannerImg.src = './assets/images/slideshow/' + slides[currentSlide].image;
   bannerTagLine.innerHTML = slides[currentSlide].tagLine;
 }
 
+// Function that updates the dots
 function updateDots() {
   const dots = document.querySelectorAll('.dot');
   dots.forEach(function(dot) {
